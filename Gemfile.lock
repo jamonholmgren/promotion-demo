@@ -1,0 +1,14 @@
+PATH
+  remote: ../ProMotion
+  specs:
+    ProMotion (0.6.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ProMotion!
