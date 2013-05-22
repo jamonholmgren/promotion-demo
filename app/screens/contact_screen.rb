@@ -1,4 +1,6 @@
 class ContactScreen < PM::Screen
+  stylesheet :contact_screen
+
   title "Contact"
 
   def will_appear
@@ -7,18 +9,13 @@ class ContactScreen < PM::Screen
 
   def set_up_view
     set_attributes self.view,
-      background_color: UIColor.grayColor
+      stylename: :contact_view
 
-    add UILabel.alloc.initWithFrame([[10, 10], [300, 45]]),
-      text: "Welcome to ProMotion!",
-      resize: [ :left, :right, :top ],
-      background_color: UIColor.clearColor,
-      text_color: UIColor.whiteColor,
-      shadow_color: UIColor.blackColor,
-      number_of_lines: 0,
-      text_alignment: UITextAlignmentCenter,
-      font: UIFont.boldSystemFontOfSize(18.0)
-
+    add label = UILabel.new,
+      stylename: :my_label,            # Teacup
+      resize: [ :left, :right, :top ], # ProMotion
+      frame: CGRectMake(10, 10, 300, 45)
+    
     true
   end
 end
