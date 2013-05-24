@@ -13,7 +13,7 @@ class AppDelegate < PM::Delegate
     PM.logger.info notification
   end
   
-  def on_registration(token, error)
+  def on_register(token, error)
     # Push up token to your server here
   end
 
