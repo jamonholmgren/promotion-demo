@@ -18,4 +18,22 @@ class ContactScreen < PM::Screen
     
     true
   end
+
+  def should_rotate(orientation)
+    PM.logger.debug "Trying to determine rotation"
+    UIDeviceOrientationPortrait == orientation
+  end
+
+  def should_autorotate
+    PM.logger.debug "should autorotate?"
+    false
+  end
+
+  def supported_orientations
+    PM.logger.debug "checking supported orientations"
+    orientations = 0
+    orientations |= UIInterfaceOrientationMaskPortrait
+    orientations
+  end
+
 end
