@@ -69,6 +69,7 @@ class StatesScreen < PM::TableScreen
 
   def on_refresh
     # refresh data
+    stop_refreshing
     update_table_data
   end
 end
