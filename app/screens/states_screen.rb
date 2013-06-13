@@ -1,5 +1,5 @@
 class StatesScreen < PM::TableScreen
-  searchable
+  searchable placeholder: "Search for states"
   refreshable
 
   title "States"
@@ -68,7 +68,15 @@ class StatesScreen < PM::TableScreen
   end
 
   def on_refresh
-    # refresh data
-    update_table_data
+    # Spin off a new thread to deal with the data.
+    Dispatch::Queue.new("com.clearsightstudio.promotion-demo.refresh").async do
+      # Load something, process it
+      sleep 2
+      # Then go back to the main thread to refresh the UI
+      Dispatch::Queue.main.async do
+        stop_refreshing
+        update_table_data
+      end
+    end
   end
 end
