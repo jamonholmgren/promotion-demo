@@ -7,6 +7,14 @@ class HelpScreen < PM::GroupedTableScreen
       cells: [
         { title: "Email us", action: :email_us },
         { title: "Open Modal", action: :modal_tapped },
+        {
+          title: "Switch",
+          accessory: {
+            view: :switch,
+            action: :switched,
+            arguments: { message: "I'm switched!" }
+          }
+        },
         { title: "Home Tab", action: :tab_open, arguments: 0 },
         { title: "States Tab", action: :tab_open, arguments: 1 },
         { title: "Contact Tab", action: :tab_open, arguments: "Contact" }
@@ -29,6 +37,10 @@ class HelpScreen < PM::GroupedTableScreen
   
   def tab_open(args)
     open_tab args
+  end
+  
+  def switched(args={})
+    App.alert "#{args[:message]} - value: #{args[:value]}"
   end
   
 end

@@ -5,71 +5,39 @@ class StatesScreen < PM::TableScreen
   title "States"
 
   def table_data
-    @about_table_data ||= [{
-      cells: [
-        { title: "Alabama" },
-        { title: "Alaska" },
-        { title: "American Samoa" },
-        { title: "Arizona" },
-        { title: "Arkansas" },
-        { title: "California" },
-        { title: "Colorado" },
-        { title: "Connecticut" },
-        { title: "Delaware" },
-        { title: "District of Columbia" },
-        { title: "Florida" },
-        { title: "Georgia" },
-        { title: "Guam" },
-        { title: "Hawaii" },
-        { title: "Idaho" },
-        { title: "Illinois" },
-        { title: "Indiana" },
-        { title: "Iowa" },
-        { title: "Kansas" },
-        { title: "Kentucky" },
-        { title: "Louisiana" },
-        { title: "Maine" },
-        { title: "Maryland" },
-        { title: "Massachusetts" },
-        { title: "Michigan" },
-        { title: "Minnesota" },
-        { title: "Mississippi" },
-        { title: "Missouri" },
-        { title: "Montana" },
-        { title: "Nebraska" },
-        { title: "Nevada" },
-        { title: "New Hampshire" },
-        { title: "New Jersey" },
-        { title: "New Mexico" },
-        { title: "New York" },
-        { title: "North Carolina" },
-        { title: "North Dakota" },
-        { title: "Northern Marianas Islands" },
-        { title: "Ohio" },
-        { title: "Oklahoma" },
-        { title: "Oregon" },
-        { title: "Pennsylvania" },
-        { title: "Puerto Rico" },
-        { title: "Rhode Island" },
-        { title: "South Carolina" },
-        { title: "South Dakota" },
-        { title: "Tennessee" },
-        { title: "Texas" },
-        { title: "Utah" },
-        { title: "Vermont" },
-        { title: "Virginia" },
-        { title: "Virgin Islands" },
-        { title: "Washington" },
-        { title: "West Virginia" },
-        { title: "Wisconsin" },
-        { title: "Wyoming" }
-      ]
-    }]
+    @about_table_data ||= begin
+      groups = []
+      current_letter = ""
+      state_names.each do |state|
+        if state[0] != current_letter
+          current_letter = state[0]
+          groups << { title: current_letter, cells: [] }
+        end
+        groups.last[:cells] << {
+          title: state,
+          action: :tapped_state,
+          arguments: { state: state }
+        }
+      end
+      groups
+    end
   end
-
+  
+  def table_data_index
+    state_names.map{|s| s[0]}.uniq
+  end
+  
+  def state_names
+    @names ||= State.all.map(&:name)
+  end
+ 
   def on_refresh
     # refresh data
     stop_refreshing
     update_table_data
+  end
+  
+  def tapped_state(args={})
+    App.alert args[:state].name
   end
 end
