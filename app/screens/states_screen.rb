@@ -2,14 +2,16 @@ class StatesScreen < PM::TableScreen
   searchable placeholder: "Search for states"
   refreshable
 
+  stylesheet :tables
+
   title "States"
 
   def table_data
     @about_table_data ||= [{
       cells: [
-        { title: "Alabama" },
-        { title: "Alaska" },
-        { title: "American Samoa" },
+        { title: "Alabama", stylename: :black_cell },
+        { title: "Alaska", editing_style: :delete },
+        { title: "American Samoa", editing_style: :insert },
         { title: "Arizona" },
         { title: "Arkansas" },
         { title: "California" },
