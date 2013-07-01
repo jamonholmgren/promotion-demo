@@ -1,5 +1,4 @@
 class AppDelegate < PM::Delegate
-  
   status_bar false, animation: :none
 
   def on_load(app, options)

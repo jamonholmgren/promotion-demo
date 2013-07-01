@@ -18,7 +18,9 @@ class StatesScreen < PM::TableScreen
         groups.last[:cells] << {
           title: state,
           action: :tapped_state,
-          arguments: { state: state }
+          arguments: { state: state },
+          background_color: UIColor.blackColor,
+          text_color: UIColor.whiteColor
         }
       end
       groups
