@@ -47,6 +47,6 @@ class StatesScreen < PM::TableScreen
   end
   
   def tapped_state(args={})
-    App.alert args[:state].name
+    App.alert args[:state]
   end
 end
