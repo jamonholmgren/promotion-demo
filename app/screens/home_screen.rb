@@ -9,6 +9,8 @@ class HomeScreen < PM::Screen
     set_attributes self.view, {
       background_color: UIColor.whiteColor
     }
+    
+    set_tab_bar_item system_icon: UITabBarSystemItemFeatured
 
     true
   end

@@ -3,6 +3,11 @@ class ContactScreen < PM::Screen
 
   title "Contact"
 
+  def on_load
+    set_tab_bar_item system_icon: UITabBarSystemItemContacts    
+    set_nav_bar_button :right, title: "Refresh"
+  end  
+  
   def will_appear
     @view_setup ||= set_up_view
   end

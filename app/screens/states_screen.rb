@@ -5,6 +5,10 @@ class StatesScreen < PM::TableScreen
   stylesheet :tables
 
   title "States"
+  
+  def on_load
+    set_tab_bar_item system_icon: UITabBarSystemItemBookmarks    
+  end
 
   def table_data
     @about_table_data ||= begin
@@ -18,9 +22,9 @@ class StatesScreen < PM::TableScreen
         groups.last[:cells] << {
           title: state,
           action: :tapped_state,
-          arguments: { state: state },
-          background_color: UIColor.blackColor,
-          text_color: UIColor.whiteColor
+          arguments: { state: state }
+          # , background_color: UIColor.blackColor
+          # , text_color: UIColor.whiteColor
         }
       end
       groups

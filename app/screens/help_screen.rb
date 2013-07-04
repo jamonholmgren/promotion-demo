@@ -1,5 +1,9 @@
 class HelpScreen < PM::GroupedTableScreen
   title "Help"
+  
+  def on_load
+    set_tab_bar_item system_icon: UITabBarSystemItemSearch    
+  end
 
   def table_data
     @help_table_data ||= [{
