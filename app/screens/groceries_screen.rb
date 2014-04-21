@@ -16,11 +16,16 @@ class GroceriesScreen < PM::GroupedTableScreen
     [{
       title: "Types",
       cells: [
-        { title: "Healthy", action: :on_cell_tapped, arguments: { id: 42 }, accessory: {
-          view: :switch,
-          action: :on_cell_switched,
-          arguments: { id: 42 }
-        } }
+        {
+          title: "Healthy",
+          action: :on_cell_tapped,
+          arguments: { id: 42 },
+          accessory: {
+            view: :switch,
+            action: :on_cell_switched,
+            arguments: { id: 42 }
+          }
+        }
       ]
     }]
   end

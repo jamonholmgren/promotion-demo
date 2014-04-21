@@ -1,8 +1,9 @@
 Teacup::Stylesheet.new :contact_screen do
-  style :contact_view,
+  style :contact_view, {
     backgroundColor: UIColor.grayColor
+  }
 
-  style :my_label,
+  style :my_label, {
     backgroundColor: UIColor.clearColor,
     text: "Welcome to ProMotion!",
     textColor: UIColor.whiteColor,
@@ -10,5 +11,6 @@ Teacup::Stylesheet.new :contact_screen do
     numberOfLines: 0,
     textAlignment: UITextAlignmentCenter,
     font: UIFont.boldSystemFontOfSize(18.0)
+  }
 
 end
